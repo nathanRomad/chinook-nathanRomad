@@ -4,3 +4,4 @@ JOIN Employee
 ON Customer.SupportRepId = Employee.EmployeeId
 JOIN Invoice
 ON Customer.CustomerId = Invoice.CustomerId
+ORDER BY Employee.LastName ASC
