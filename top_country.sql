@@ -1,7 +1,21 @@
-SELECT SUM(Total) AS TotalSales, Customer.CustomerId, BillingCountry
+SELECT BillingCountry, '$'|| MAX(ROUND(TotalSales, 2))
+FROM (
+SELECT BillingCountry, SUM(Total) AS TotalSales
 FROM Invoice
 JOIN Customer ON Invoice.CustomerId = Customer.CustomerId
-ORDER BY SumTotal
+GROUP BY BillingCountry
+ORDER BY TotalSales DESC
+)
+
+SELECT BillingCountry, '$'||ROUND(TotalSales, 2)
+FROM (
+SELECT BillingCountry, SUM(Total) AS TotalSales
+FROM Invoice
+JOIN Customer ON Invoice.CustomerId = Customer.CustomerId
+GROUP BY BillingCountry
+ORDER BY TotalSales DESC
+LIMIT 1
+)
 
 -----------------
 WITH TotalSales AS (
@@ -14,10 +28,3 @@ SELECT '$' || MAX(Total) "Grand Total", Country
 FROM TotalSales
 
 ----------------
-SELECT
-    SUM(Total) as TotalSales,
-    *
-FROM Invoice
-GROUP BY BillingCountry
-ORDER BY TotalSales DESC
-LIMIT 1
