@@ -18,7 +18,7 @@ ORDER BY TotalSales DESC
 LIMIT 1
 )
 
------------------
+-------------AMART--------------
 WITH TotalSales AS (
     SELECT SUM(Total) Total,
         BillingCountry Country
