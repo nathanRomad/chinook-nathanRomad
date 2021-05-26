@@ -6,6 +6,7 @@ JOIN Customer ON Invoice.CustomerId = Customer.CustomerId
 GROUP BY BillingCountry
 ORDER BY TotalSales DESC
 )
+-----------------
 
 SELECT BillingCountry, '$'||ROUND(TotalSales, 2)
 FROM (
