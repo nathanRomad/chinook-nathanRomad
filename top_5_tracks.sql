@@ -1,9 +1,8 @@
 SELECT COUNT(InvoiceLine.InvoiceId) as TrackCount, Track.Name as TrackName, Track.TrackId
 FROM InvoiceLine
-JOIN Invoice ON InvoiceLine.InvoiceId = Invoice.InvoiceId
 JOIN Track ON InvoiceLine.TrackId = Track.TrackId
 GROUP BY Track.TrackId
-ORDER BY TrackCount ASC
+ORDER BY TrackCount DESC
 LIMIT 5
 
 
